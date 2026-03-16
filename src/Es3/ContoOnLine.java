@@ -13,9 +13,15 @@ public class ContoOnLine extends ContoCorrente {
                 + " - Massimo movimenti: " + getMaxMovimenti() + " - Massimo prelievo possibile: " + maxPrelievo);
     }
 
-    public void preleva(double x) {
+    public double getMaxPrelievo() {
+        return maxPrelievo;
+    }
+
+    public void preleva(double x) throws BancaException {
         if (x <= maxPrelievo) {
             super.preleva(x);
+        } else {
+            throw new BancaException("Il prelievo non e' disponibile");
         }
     }
 }
