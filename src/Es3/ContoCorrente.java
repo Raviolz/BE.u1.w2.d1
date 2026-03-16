@@ -39,10 +39,17 @@ public class ContoCorrente {
         return saldo;
     }
 
-    public void preleva(double x) {
-        if (nMovimenti < maxMovimenti) saldo = saldo - x;
-        else saldo = saldo - x - 0.50;
+    public void preleva(double x) throws BancaException { // se hai sforato il massimo di movimenti: 50 hai una commissione di 50 cent.
         nMovimenti++;
+        if (nMovimenti < maxMovimenti) {
+            if (saldo - x < 0) {
+                throw new BancaException("Conto in rosso");
+            } else {
+                saldo = saldo - x;
+            }
+        } else saldo = saldo - x - 0.50;
+
+
     }
 
     public double restituisciSaldo() {
