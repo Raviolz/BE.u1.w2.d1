@@ -24,3 +24,7 @@ public class Main {
         }
     }
 }
+
+
+// Con 5.2 va in errore devi inserire un numero.
+// Double.parseDouble() per farlo andare
